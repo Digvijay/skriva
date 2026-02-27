@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <!-- Skriva logo: a fountain pen nib writing on a page -->
+  <!-- Page -->
+  <rect x="20" y="16" width="72" height="96" rx="4" fill="#f6f8fa" stroke="#d0d7de" stroke-width="2"/>
+  <!-- Lines on page -->
+  <line x1="32" y1="36" x2="72" y2="36" stroke="#d0d7de" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="48" x2="68" y2="48" stroke="#d0d7de" stroke-width="2" stroke-linecap="round"/>
+  <line x1="32" y1="60" x2="58" y2="60" stroke="#d0d7de" stroke-width="2" stroke-linecap="round"/>
+  <!-- Pen nib -->
+  <g transform="translate(52, 30) rotate(35)">
+    <!-- Barrel -->
+    <rect x="-4" y="-52" width="8" height="40" rx="2" fill="#24292f"/>
+    <!-- Grip section -->
+    <rect x="-3.5" y="-14" width="7" height="12" rx="1.5" fill="#57606a"/>
+    <!-- Nib -->
+    <polygon points="0,6 -3.5,-2 3.5,-2" fill="#d4a017"/>
+    <!-- Nib tip -->
+    <line x1="0" y1="6" x2="0" y2="10" stroke="#24292f" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <!-- Ink dot -->
+  <circle cx="73" cy="67" r="2" fill="#0969da"/>
+  <!-- Written text (stylized) -->
+  <path d="M32 72 Q38 68 44 72 Q50 76 56 72 Q62 68 68 72" stroke="#0969da" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M32 82 Q36 78 42 82 Q48 86 52 82" stroke="#0969da" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Swedish flag (corner badge) -->
+  <g transform="translate(88, 86)">
+    <rect x="0" y="0" width="24" height="16" rx="2" fill="#006AA7"/>
+    <rect x="7.5" y="0" width="3.5" height="16" fill="#FECC02"/>
+    <rect x="0" y="6" width="24" height="3.5" fill="#FECC02"/>
+  </g>
+</svg>

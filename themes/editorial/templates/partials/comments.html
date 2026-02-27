@@ -1,0 +1,19 @@
+{{define "comments"}}
+<section class="comments" id="comments">
+<h2>{{i18n "comments"}} ({{len .Comments}})</h2>
+{{range .Comments}}
+<div class="comment">
+<strong>{{.Author}}</strong>
+<time>{{formatDate .CreatedAt "Jan 2, 2006"}}</time>
+<p>{{.Content}}</p>
+</div>
+{{end}}
+<form action="/api/comment/{{.Post.Slug}}" method="POST">
+<input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+<input type="text" name="author" placeholder="{{i18n "name"}}" required maxlength="100">
+<div style="display:none"><input type="text" name="website" tabindex="-1"></div>
+<textarea name="content" placeholder="{{i18n "message"}}" required maxlength="5000"></textarea>
+<button type="submit">{{i18n "post_comment"}}</button>
+</form>
+</section>
+{{end}}

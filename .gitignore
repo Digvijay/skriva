@@ -1,0 +1,64 @@
+# Binaries
+/blog
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test
+*.test
+*.out
+coverage.html
+
+# Fuzz corpus (machine-generated, not reproducible)
+**/testdata/fuzz/
+
+# Go workspace
+go.work
+go.work.sum
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets — never commit
+data/config/secrets.yaml
+data/config/smtp.yaml
+data/config/blog.db
+data/config/blog.db-wal
+data/config/blog.db-shm
+data/config/certs/
+
+# Internal security docs — never commit
+.github/REDTEAM.md
+
+# Copilot instructions (contains internal architecture details)
+.github/copilot-instructions.md
+
+# Internal roadmap
+ROADMAP.md
+
+# Environment files
+.env
+.env.*
+
+# Uploaded media (keep structure but not user files)
+data/content/posts/*/media/*
+!data/content/posts/*/media/.gitkeep
+
+# VitePress build output and deps
+docs/node_modules/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# Go build cache
+dist/

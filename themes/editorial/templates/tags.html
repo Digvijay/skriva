@@ -1,0 +1,11 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<h1 style="font-family:var(--font-heading);font-size:2rem;margin:2rem 0 1.5rem">{{i18n "tags"}}</h1>
+<div class="tags-grid">
+{{range .Tags}}
+<a href="/tag/{{.Slug}}" class="tag-badge">{{.Name}} <span class="tag-count">{{.Count}}</span></a>
+{{end}}
+</div>
+</div>
+{{end}}

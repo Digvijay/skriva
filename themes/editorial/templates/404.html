@@ -1,0 +1,8 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container error-page">
+<h1>404</h1>
+<p>{{if .Error}}{{.Error}}{{else}}The page you're looking for doesn't exist.{{end}}</p>
+<a href="/" style="display:inline-block;margin-top:1rem;padding:.6rem 1.5rem;background:var(--color-primary);color:#fff;border-radius:8px;font-weight:600">← Back to Home</a>
+</div>
+{{end}}

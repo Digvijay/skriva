@@ -1,0 +1,18 @@
+{{define "nav"}}
+<header class="site-header">
+<div class="container">
+<div class="site-brand">
+<a href="/" class="site-title">{{.Site.Title}}</a>
+{{if .Site.Tagline}}<p class="site-tagline">{{.Site.Tagline}}</p>{{end}}
+</div>
+<nav class="site-nav">
+<a href="/" {{if eq .Nav.ActiveSection "home"}}class="active"{{end}}>Home</a>
+<a href="/archive" {{if eq .Nav.ActiveSection "archive"}}class="active"{{end}}>Archive</a>
+<a href="/search" {{if eq .Nav.ActiveSection "search"}}class="active"{{end}}>Search</a>
+{{if .Site.Social.Github}}<a href="https://github.com/{{.Site.Social.Github}}" target="_blank" rel="noopener">GitHub</a>{{end}}
+<a href="/rss.xml" title="RSS Feed">RSS</a>
+<button class="theme-toggle" onclick="toggleColorMode()" aria-label="Toggle color mode"><span class="theme-toggle-icon">🌙</span></button>
+</nav>
+</div>
+</header>
+{{end}}

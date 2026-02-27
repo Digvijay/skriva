@@ -1,0 +1,20 @@
+/* Syntax highlighting — Chroma Dracula overrides */
+/* Only style the container, not inline-styled tokens */
+.post-content pre {
+  border-radius: 10px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  font-size: .9rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+}
+.post-content pre:not([style]) {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+.post-content pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  border: none;
+}

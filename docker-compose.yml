@@ -1,0 +1,17 @@
+services:
+  blog:
+    build: .
+    image: ghcr.io/digvijay/skriva:latest
+    container_name: blog
+    read_only: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/content:/data/content
+      - ./data/config:/data/config
+    environment:
+      - BLOG_PORT=8080
+      - BLOG_LOG_LEVEL=info
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true

@@ -1,0 +1,22 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<h1 style="font-family:var(--font-heading);font-size:2rem;margin:2rem 0 1.5rem">{{i18n "archive"}}</h1>
+{{$year := ""}}
+<div class="archive-list">
+{{range .Posts}}
+{{$postYear := formatDate .Date "2006"}}
+{{if ne $postYear $year}}
+{{$year = $postYear}}
+<h2 class="archive-year">{{$year}}</h2>
+{{end}}
+<ul class="archive-list">
+<li>
+<time>{{formatDate .Date "Jan 2"}}</time>
+<a href="{{.Permalink}}">{{.Title}}</a>
+</li>
+</ul>
+{{end}}
+</div>
+</div>
+{{end}}

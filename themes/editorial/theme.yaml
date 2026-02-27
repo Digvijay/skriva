@@ -1,0 +1,11 @@
+name: "Editorial"
+description: "A striking 2-column editorial theme inspired by Ghost's premium themes. Features a full-width hero, magazine-style post grid, and sidebar on post pages."
+author: "Skriva"
+version: "1.0.0"
+layout: "two-column"
+colors:
+  primary: "#e63946"
+  background: "#fefae0"
+  text: "#1d3557"
+  muted: "#457b9d"
+  accent: "#e63946"

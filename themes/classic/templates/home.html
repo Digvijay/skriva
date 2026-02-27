@@ -1,0 +1,38 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+
+{{/* Featured posts section */}}
+{{if .Posts}}
+<section class="posts-list">
+{{range .Posts}}
+{{template "post-card" .}}
+{{end}}
+</section>
+
+{{if .Pagination}}
+<nav class="pagination">
+{{if .Pagination.HasPrev}}<a href="{{.Pagination.PrevURL}}" class="pagination-btn prev">&larr; Newer Posts</a>{{end}}
+<span class="pagination-info">Page {{.Pagination.CurrentPage}} of {{.Pagination.TotalPages}}</span>
+{{if .Pagination.HasNext}}<a href="{{.Pagination.NextURL}}" class="pagination-btn next">Older Posts &rarr;</a>{{end}}
+</nav>
+{{end}}
+{{else}}
+<div class="empty-state">
+<h2>No posts yet</h2>
+<p>Check back soon for new content!</p>
+</div>
+{{end}}
+
+{{/* Sidebar-style tag cloud */}}
+{{if .Tags}}
+<section class="tag-cloud">
+<h2>Topics</h2>
+<div class="tags">
+{{range .Tags}}<a href="/tag/{{.Slug}}" class="tag">{{.Name}} <span class="tag-count">({{.Count}})</span></a>{{end}}
+</div>
+</section>
+{{end}}
+
+</div>
+{{end}}

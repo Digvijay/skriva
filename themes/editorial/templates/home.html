@@ -1,0 +1,30 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+
+<section class="hero">
+{{if .Site.Author.Avatar}}<img src="{{.Site.Author.Avatar}}" alt="{{.Site.Author.Name}}" class="hero-avatar">{{end}}
+<h1>{{.Site.Title}}</h1>
+{{if .Site.Tagline}}<p>{{.Site.Tagline}}</p>{{end}}
+</section>
+
+{{if .Posts}}
+<section class="posts-grid">
+{{range .Posts}}
+{{template "post-card" .}}
+{{end}}
+</section>
+
+{{if .Pagination}}
+<nav class="pagination">
+{{if .Pagination.HasPrev}}<a href="{{.Pagination.PrevURL}}">&larr; {{i18n "newer"}}</a>{{end}}
+<span>{{.Pagination.CurrentPage}} / {{.Pagination.TotalPages}}</span>
+{{if .Pagination.HasNext}}<a href="{{.Pagination.NextURL}}">{{i18n "older"}} &rarr;</a>{{end}}
+</nav>
+{{end}}
+{{else}}
+<p style="text-align:center;padding:3rem;color:var(--color-muted)">No posts yet. Create your first post in the admin editor!</p>
+{{end}}
+
+</div>
+{{end}}

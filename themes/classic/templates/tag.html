@@ -1,0 +1,19 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<header class="section-header">
+<h1>Posts tagged "{{.Tag.Name}}"</h1>
+<p class="section-desc">{{.Tag.Count}} post{{if ne .Tag.Count 1}}s{{end}} found</p>
+</header>
+
+<section class="posts-list">
+{{range .Posts}}
+{{template "post-card" .}}
+{{end}}
+</section>
+
+<div class="back-link">
+<a href="/">&larr; Back to all posts</a>
+</div>
+</div>
+{{end}}

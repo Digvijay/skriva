@@ -1,0 +1,61 @@
+{{define "base"}}<!DOCTYPE html>
+<html lang="en" data-color-mode="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{.Meta.Title}}</title>
+{{if .Meta.Description}}<meta name="description" content="{{.Meta.Description}}">{{end}}
+{{if .Meta.CanonicalURL}}<link rel="canonical" href="{{.Meta.CanonicalURL}}">{{end}}
+<meta property="og:title" content="{{.Meta.Title}}">
+{{if .Meta.Description}}<meta property="og:description" content="{{.Meta.Description}}">{{end}}
+<meta property="og:type" content="{{.Meta.OGType}}">
+{{if .Meta.CanonicalURL}}<meta property="og:url" content="{{.Meta.CanonicalURL}}">{{end}}
+{{if .Meta.OGImage}}<meta property="og:image" content="{{.Meta.OGImage}}">{{end}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{.Meta.Title}}">
+<link rel="alternate" type="application/rss+xml" title="{{.Site.Title}} RSS" href="/rss.xml">
+<link rel="stylesheet" href="/theme/css/theme.css?v={{cacheVer}}">
+<link rel="stylesheet" href="/theme/css/syntax.css?v={{cacheVer}}">
+{{if .Site.WebmentionEnabled}}<link rel="webmention" href="/webmention">{{end}}
+{{if .Site.MicropubEnabled}}<link rel="micropub" href="/micropub">{{end}}
+{{if .Site.IndieAuthEnabled}}<link rel="authorization_endpoint" href="/indieauth/auth">
+<link rel="token_endpoint" href="/indieauth/token">{{end}}
+{{template "head" .}}
+</head>
+<body>
+{{template "nav" .}}
+<main class="main">{{block "content" .}}{{end}}</main>
+{{template "footer" .}}
+<script>
+(function(){
+  var h=document.documentElement,s=localStorage.getItem('color-mode');
+  if(s)h.setAttribute('data-color-mode',s);
+  else if(window.matchMedia('(prefers-color-scheme:dark)').matches)h.setAttribute('data-color-mode','dark');
+  window.toggleColorMode=function(){
+    var c=h.getAttribute('data-color-mode'),n=c==='dark'?'light':'dark';
+    h.setAttribute('data-color-mode',n);localStorage.setItem('color-mode',n);
+    document.querySelectorAll('.theme-toggle-icon').forEach(function(el){el.textContent=n==='dark'?'☀️':'🌙';});
+  };
+  document.addEventListener('DOMContentLoaded',function(){
+    var m=h.getAttribute('data-color-mode');
+    document.querySelectorAll('.theme-toggle-icon').forEach(function(el){el.textContent=m==='dark'?'☀️':'🌙';});
+  });
+})();
+</script>
+<!-- Reading progress bar -->
+<div id="readingProgress" style="position:fixed;top:0;left:0;width:0;height:3px;background:var(--color-primary);z-index:9999;transition:width .1s"></div>
+<script>
+(function(){var bar=document.getElementById('readingProgress');if(!document.querySelector('.post-content'))return bar.style.display='none';window.addEventListener('scroll',function(){var h=document.documentElement,b=document.body;var st=h.scrollTop||b.scrollTop;var sh=h.scrollHeight||b.scrollHeight;var ch=h.clientHeight;bar.style.width=Math.min(100,st/(sh-ch)*100)+'%';});})();
+</script>
+<!-- Gallery lightbox -->
+<div id="lightbox" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.9);z-index:10000;cursor:pointer;justify-content:center;align-items:center" onclick="this.style.display='none'">
+<img id="lightboxImg" style="max-width:95%;max-height:95%;object-fit:contain;border-radius:8px">
+<button style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer">&times;</button>
+</div>
+<script>
+document.addEventListener('click',function(e){if(e.target.tagName==='IMG'&&e.target.closest('.post-content')){document.getElementById('lightboxImg').src=e.target.src;document.getElementById('lightbox').style.display='flex';}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('lightbox').style.display='none';});
+</script>
+</body>
+</html>
+{{end}}

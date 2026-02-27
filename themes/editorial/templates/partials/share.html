@@ -1,0 +1,10 @@
+{{define "share"}}
+<div class="share-buttons">
+<span>{{i18n "share"}}:</span>
+<a href="https://twitter.com/intent/tweet?url={{.Meta.CanonicalURL}}&text={{.Post.Title}}" target="_blank" rel="noopener">Twitter</a>
+<a href="https://www.linkedin.com/sharing/share-offsite/?url={{.Meta.CanonicalURL}}" target="_blank" rel="noopener">LinkedIn</a>
+<a href="https://bsky.app/intent/compose?text={{.Post.Title}}%20{{.Meta.CanonicalURL}}" target="_blank" rel="noopener">Bluesky</a>
+<a href="mailto:?subject={{.Post.Title}}&body={{.Meta.CanonicalURL}}">Email</a>
+<button onclick="var i=prompt('Your Mastodon instance (e.g. mastodon.social):');if(i){i=i.replace(/^https?:\/\//,'').replace(/\/$/,'');window.open('https://'+i+'/share?text='+encodeURIComponent('{{.Post.Title}} {{.Meta.CanonicalURL}}'));}">Mastodon</button>
+</div>
+{{end}}

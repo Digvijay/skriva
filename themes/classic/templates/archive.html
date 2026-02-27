@@ -1,0 +1,33 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<header class="section-header">
+<h1>Archive</h1>
+<p class="section-desc">All {{len .Posts}} posts, chronologically.</p>
+</header>
+
+<div class="archive-list">
+{{$year := 0}}
+{{range .Posts}}
+{{$postYear := .Date.Year}}
+{{if ne $postYear $year}}
+{{$year = $postYear}}
+<h2 class="archive-year">{{$year}}</h2>
+{{end}}
+<div class="archive-item">
+<time datetime="{{.Date.Format "2006-01-02"}}">{{formatDate .Date "Jan 2"}}</time>
+<a href="/{{.Slug}}">{{.Title}}</a>
+</div>
+{{end}}
+</div>
+
+{{if .Tags}}
+<section class="tag-cloud" style="margin-top:3rem">
+<h2>All Tags</h2>
+<div class="tags">
+{{range .Tags}}<a href="/tag/{{.Slug}}" class="tag">{{.Name}} <span class="tag-count">({{.Count}})</span></a>{{end}}
+</div>
+</section>
+{{end}}
+</div>
+{{end}}

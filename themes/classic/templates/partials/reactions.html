@@ -1,0 +1,21 @@
+{{define "reactions"}}
+<div class="reactions" data-slug="{{.Post.Slug}}">
+<button class="reaction-btn like-btn" onclick="react('like','{{.Post.Slug}}')">
+<span class="reaction-icon">👍</span>
+<span class="reaction-count" id="likes">{{if .Stats}}{{.Stats.Likes}}{{else}}0{{end}}</span>
+</button>
+<button class="reaction-btn dislike-btn" onclick="react('dislike','{{.Post.Slug}}')">
+<span class="reaction-icon">👎</span>
+<span class="reaction-count" id="dislikes">{{if .Stats}}{{.Stats.Dislikes}}{{else}}0{{end}}</span>
+</button>
+{{if .Stats}}<span class="view-count">{{.Stats.Views}} views</span>{{end}}
+</div>
+<script>
+async function react(type, slug){
+  try{
+    const res=await fetch('/api/reaction/'+slug,{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':'{{.CSRFToken}}'},body:JSON.stringify({type:type})});
+    if(res.ok){const d=await res.json();document.getElementById('likes').textContent=d.likes;document.getElementById('dislikes').textContent=d.dislikes;}
+  }catch(e){}
+}
+</script>
+{{end}}

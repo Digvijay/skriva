@@ -1,0 +1,37 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<header class="section-header">
+<h1>
+<svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" class="octicon"><path d="M5.75.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM2 4.75A.75.75 0 0 1 2.75 4h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75ZM0 8.75A1.75 1.75 0 0 1 1.75 7h12.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25Z"/></svg>
+Archive
+</h1>
+<p class="section-desc">All {{len .Posts}} posts, chronologically.</p>
+</header>
+
+<div class="archive-timeline">
+{{$year := 0}}
+{{range .Posts}}
+{{$postYear := .Date.Year}}
+{{if ne $postYear $year}}
+{{$year = $postYear}}
+<h2 class="archive-year">{{$year}}</h2>
+{{end}}
+<div class="archive-item">
+<time datetime="{{.Date.Format "2006-01-02"}}">{{formatDate .Date "Jan 2"}}</time>
+<a href="/{{.Slug}}">{{.Title}}</a>
+{{if .Tags}}<span class="archive-tags">{{range .Tags}}<a href="/tag/{{slugify .}}" class="label label-sm">{{.}}</a>{{end}}</span>{{end}}
+</div>
+{{end}}
+</div>
+
+{{if .Tags}}
+<aside class="tag-cloud" style="margin-top:3rem">
+<h2>All Tags</h2>
+<div class="labels">
+{{range .Tags}}<a href="/tag/{{.Slug}}" class="label label-lg">{{.Name}} <span class="Counter">{{.Count}}</span></a>{{end}}
+</div>
+</aside>
+{{end}}
+</div>
+{{end}}

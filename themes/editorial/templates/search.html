@@ -1,0 +1,21 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<h1 style="font-family:var(--font-heading);font-size:2rem;margin:2rem 0 1rem">{{i18n "search"}}</h1>
+<form class="search-form" action="/search" method="GET">
+<input type="text" name="q" value="{{.SearchQuery}}" placeholder="{{i18n "search_placeholder"}}" autofocus>
+<button type="submit">{{i18n "search"}}</button>
+</form>
+
+{{if .SearchQuery}}
+{{if .SearchResults}}
+<p style="color:var(--color-muted);margin-bottom:1.5rem">{{len .SearchResults}} results for "{{.SearchQuery}}"</p>
+<div class="posts-grid">
+{{range .SearchResults}}{{template "post-card" .}}{{end}}
+</div>
+{{else}}
+<p style="color:var(--color-muted);text-align:center;padding:2rem">{{i18n "no_results"}}</p>
+{{end}}
+{{end}}
+</div>
+{{end}}

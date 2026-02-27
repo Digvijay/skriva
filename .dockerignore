@@ -1,0 +1,67 @@
+# .dockerignore — Exclude files from Docker build context
+
+# This speeds up builds and prevents secrets from leaking into images.
+
+# Git
+
+.git
+.gitignore
+
+# GitHub
+
+.github/
+
+# Dev container
+
+.devcontainer/
+
+# IDE
+
+.idea/
+.vscode/
+_.swp
+_.swo
+
+# Documentation site (not needed in runtime image)
+
+docs/
+GETTING_STARTED.md
+CHANGELOG.md
+SECURITY.md
+README.md
+LICENSE
+
+# Data directories (runtime volumes, not baked into image)
+
+data/
+
+# Binaries (we build fresh in Docker)
+
+blog
+\*.exe
+
+# Test artifacts
+
+_.test
+_.out
+coverage.html
+
+# Node / JS (docs build only)
+
+node_modules/
+
+# Environment files
+
+.env
+.env.\*
+
+# OS artifacts
+
+.DS_Store
+Thumbs.db
+
+# Docker files (prevent recursive context)
+
+Dockerfile
+docker-compose.yml
+.dockerignore

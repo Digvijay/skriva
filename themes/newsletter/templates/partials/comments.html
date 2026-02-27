@@ -1,0 +1,39 @@
+{{define "comments"}}
+<section class="comments" id="comments">
+<h2>Comments {{if .Comments}}({{len .Comments}}){{end}}</h2>
+
+{{range .Comments}}
+<div class="comment">
+<div class="comment-header">
+<strong class="comment-author">{{.Author}}</strong>
+<time class="comment-date" datetime="{{.CreatedAt.Format "2006-01-02"}}">{{formatDate .CreatedAt "Jan 2, 2006"}}</time>
+</div>
+<div class="comment-body">{{.Content}}</div>
+</div>
+{{end}}
+
+<div class="comment-form">
+<h3>Leave a comment</h3>
+<form action="/api/comment/{{.Post.Slug}}" method="POST">
+<input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+<div class="form-row">
+<div class="form-group">
+<label for="author">Name *</label>
+<input type="text" id="author" name="author" required maxlength="100" placeholder="Your name">
+</div>
+<div class="form-group">
+<label for="email">Email (optional)</label>
+<input type="email" id="email" name="email" maxlength="200" placeholder="you@example.com">
+</div>
+</div>
+<!-- Honeypot -->
+<div style="display:none"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+<div class="form-group">
+<label for="content">Comment *</label>
+<textarea id="content" name="content" rows="5" required maxlength="5000" placeholder="Write your thoughts..."></textarea>
+</div>
+<button type="submit" class="btn btn-primary">Post Comment</button>
+</form>
+</div>
+</section>
+{{end}}

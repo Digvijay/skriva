@@ -1,0 +1,16 @@
+name: "Newsletter"
+description: "A modern, Ghost-inspired theme with a dark color palette, large typography, and magazine-style 2-column card layout."
+author: "Skriva"
+version: "1.0.0"
+colors:
+  primary: "#6366f1"
+  background: "#15171a"
+  text: "#f0f0f0"
+  muted: "#a1a1aa"
+  accent: "#818cf8"
+  border: "#27272a"
+layout: "two-column"
+fonts:
+  heading: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+  body: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+  code: "'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace"

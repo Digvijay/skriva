@@ -1,0 +1,29 @@
+{{define "footer"}}
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+{{range .Site.Footer.Sections}}
+<div>
+<h3>{{.Title}}</h3>
+<ul>{{range .Links}}<li><a href="{{.URL}}">{{.Label}}</a></li>{{end}}</ul>
+</div>
+{{end}}
+<div>
+<h3>{{i18n "subscribe"}}</h3>
+<ul><li><a href="/rss.xml">RSS Feed</a></li></ul>
+<form action="/api/subscribe" method="POST">
+<input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+<input type="email" name="email" placeholder="{{i18n "your_email"}}" required>
+<button type="submit">{{i18n "subscribe"}}</button>
+</form>
+</div>
+</div>
+{{if .FediAddress}}<p class="fedi-address">Follow on the Fediverse: <code>{{.FediAddress}}</code></p>{{end}}
+<p>&copy; {{currentYear}} {{.Site.Author.Name}}. {{i18n "powered_by"}} <a href="https://github.com/digvijay-msft/blog">Skriva</a>.</p>
+</div>
+</footer>
+<div id="cookieConsent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:var(--color-surface);color:var(--color-text);padding:.75rem 1.5rem;font-size:.85rem;z-index:9999;text-align:center;border-top:1px solid var(--color-border)">
+  This site uses cookies for sessions and analytics. <a href="#" style="color:var(--color-primary)" onclick="acceptCookies();return false">Got it</a>
+</div>
+<script>if(!localStorage.getItem('cookie_consent')){document.getElementById('cookieConsent').style.display='block'}function acceptCookies(){localStorage.setItem('cookie_consent','1');document.getElementById('cookieConsent').style.display='none'}</script>
+{{end}}

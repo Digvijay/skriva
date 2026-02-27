@@ -1,0 +1,12 @@
+{{template "base" .}}
+{{define "content"}}
+<article class="page container">
+<header class="page-header">
+<h1 class="page-title">{{.Page.Title}}</h1>
+{{if .Page.Description}}<p class="page-subtitle">{{.Page.Description}}</p>{{end}}
+</header>
+<div class="markdown-body">
+{{safeHTML .Page.HTML}}
+</div>
+</article>
+{{end}}

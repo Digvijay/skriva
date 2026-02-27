@@ -1,0 +1,14 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<div class="section-header">
+<h1>Tags</h1>
+<p style="color:var(--color-fg-muted)">Browse all topics.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem">
+{{range .Tags}}
+<a href="/tag/{{.Slug}}" class="label" style="padding:.35rem .75rem;border:1px solid var(--color-border-default);border-radius:2em;text-decoration:none;font-size:.875rem">{{.Name}} <span style="color:var(--color-fg-muted)">({{.Count}})</span></a>
+{{end}}
+</div>
+</div>
+{{end}}

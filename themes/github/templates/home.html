@@ -1,0 +1,47 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+
+{{/* Hero section if there's a tagline */}}
+{{if .Site.Tagline}}
+<section class="hero">
+<div class="hero-content">
+<h1>{{.Site.Title}}</h1>
+<p>{{.Site.Tagline}}</p>
+</div>
+</section>
+{{end}}
+
+{{if .Posts}}
+<section class="posts-feed">
+{{range .Posts}}
+{{template "post-card" .}}
+{{end}}
+</section>
+
+{{if .Pagination}}
+<nav class="pagination" aria-label="Pagination">
+{{if .Pagination.HasPrev}}<a href="{{.Pagination.PrevURL}}" class="btn btn-outline">&larr; Newer</a>{{end}}
+<span class="pagination-info">Page {{.Pagination.CurrentPage}} of {{.Pagination.TotalPages}}</span>
+{{if .Pagination.HasNext}}<a href="{{.Pagination.NextURL}}" class="btn btn-outline">Older &rarr;</a>{{end}}
+</nav>
+{{end}}
+{{else}}
+<div class="blankslate">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3.5 3.75a.25.25 0 0 1 .25-.25h13.5a.25.25 0 0 1 .25.25v10a.75.75 0 0 0 1.5 0v-10A1.75 1.75 0 0 0 17.25 2H3.75A1.75 1.75 0 0 0 2 3.75v16.5c0 .966.784 1.75 1.75 1.75h7a.75.75 0 0 0 0-1.5h-7a.25.25 0 0 1-.25-.25V3.75Z"/><path d="M6.25 7a.75.75 0 0 0 0 1.5h8.5a.75.75 0 0 0 0-1.5h-8.5Zm-.75 4.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm16.28 4.53a.75.75 0 1 0-1.06-1.06l-4.97 4.97-1.97-1.97a.75.75 0 1 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.06 0l5.5-5.5Z"/></svg>
+<h3>No posts yet</h3>
+<p>Check back soon for new content!</p>
+</div>
+{{end}}
+
+{{if .Tags}}
+<aside class="tag-cloud">
+<h2>Topics</h2>
+<div class="labels">
+{{range .Tags}}<a href="/tag/{{.Slug}}" class="label label-lg">{{.Name}} <span class="Counter">{{.Count}}</span></a>{{end}}
+</div>
+</aside>
+{{end}}
+
+</div>
+{{end}}

@@ -1,0 +1,20 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<h1 style="font-family:var(--font-heading);font-size:2rem;margin:2rem 0 1rem">{{i18n "tag_page"}}: {{.Tag.Name}}</h1>
+<p style="color:var(--color-muted);margin-bottom:2rem">{{.Tag.Count}} {{if eq .Tag.Count 1}}post{{else}}posts{{end}}</p>
+
+{{if .Posts}}
+<div class="posts-grid">
+{{range .Posts}}{{template "post-card" .}}{{end}}
+</div>
+{{if .Pagination}}
+<nav class="pagination">
+{{if .Pagination.HasPrev}}<a href="{{.Pagination.PrevURL}}">&larr; {{i18n "newer"}}</a>{{end}}
+<span>{{.Pagination.CurrentPage}} / {{.Pagination.TotalPages}}</span>
+{{if .Pagination.HasNext}}<a href="{{.Pagination.NextURL}}">{{i18n "older"}} &rarr;</a>{{end}}
+</nav>
+{{end}}
+{{end}}
+</div>
+{{end}}

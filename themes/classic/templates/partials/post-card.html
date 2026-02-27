@@ -1,0 +1,24 @@
+{{define "post-card"}}
+<article class="post-card">
+{{if .Image}}
+<a href="/{{.Slug}}" class="post-card-image">
+<img src="/media/{{.Slug}}/{{.Image}}" alt="{{.Title}}" loading="lazy">
+</a>
+{{end}}
+<div class="post-card-content">
+<div class="post-card-meta">
+<time datetime="{{.Date.Format "2006-01-02"}}">{{formatDate .Date "January 2, 2006"}}</time>
+{{if .Tags}}
+<span class="post-card-tags">
+{{range .Tags}}<a href="/tag/{{slugify .}}" class="tag">{{.}}</a>{{end}}
+</span>
+{{end}}
+</div>
+<h2 class="post-card-title"><a href="/{{.Slug}}">{{.Title}}</a></h2>
+{{if .Description}}<p class="post-card-desc">{{truncate .Description 160}}</p>{{end}}
+<div class="post-card-footer">
+<span class="reading-time">{{readingTime .}}</span>
+</div>
+</div>
+</article>
+{{end}}

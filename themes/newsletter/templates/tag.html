@@ -1,0 +1,19 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<header class="section-header">
+<h1>Posts tagged <span class="highlight">"{{.Tag.Name}}"</span></h1>
+<p class="section-desc">{{.Tag.Count}} post{{if ne .Tag.Count 1}}s{{end}}</p>
+</header>
+
+<section class="posts-grid">
+{{range .Posts}}
+{{template "post-card" .}}
+{{end}}
+</section>
+
+<div class="back-link">
+<a href="/">&larr; All posts</a>
+</div>
+</div>
+{{end}}

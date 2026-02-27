@@ -1,0 +1,88 @@
+/* Syntax highlighting — Dracula-inspired */
+/* Generated to complement the classic theme */
+
+.chroma { background: var(--color-surface); border-radius: 6px; }
+.chroma .lnt { color: var(--color-text-muted); margin-right: 0.75em; }
+.chroma .ln { color: var(--color-text-muted); margin-right: 0.75em; }
+.chroma .k { color: #d73a49; font-weight: 600; }  /* Keyword */
+.chroma .kc { color: #d73a49; font-weight: 600; }
+.chroma .kd { color: #d73a49; font-weight: 600; }
+.chroma .kn { color: #d73a49; font-weight: 600; }
+.chroma .kp { color: #d73a49; }
+.chroma .kr { color: #d73a49; font-weight: 600; }
+.chroma .kt { color: #6f42c1; }  /* Keyword Type */
+.chroma .na { color: #6f42c1; }  /* Name Attribute */
+.chroma .nb { color: #005cc5; }  /* Name Builtin */
+.chroma .nc { color: #6f42c1; font-weight: 600; }  /* Name Class */
+.chroma .no { color: #005cc5; }  /* Name Constant */
+.chroma .nd { color: #6f42c1; }  /* Name Decorator */
+.chroma .nf { color: #6f42c1; }  /* Name Function */
+.chroma .ni { color: #24292f; font-weight: 600; }
+.chroma .nl { color: #005cc5; }  /* Name Label */
+.chroma .nn { color: #24292f; }  /* Name Namespace */
+.chroma .nt { color: #22863a; }  /* Name Tag */
+.chroma .nv { color: #e36209; }  /* Name Variable */
+.chroma .s { color: #032f62; }  /* String */
+.chroma .sa { color: #032f62; }
+.chroma .sb { color: #032f62; }
+.chroma .sc { color: #032f62; }
+.chroma .dl { color: #032f62; }
+.chroma .sd { color: #032f62; }
+.chroma .s2 { color: #032f62; }
+.chroma .se { color: #032f62; font-weight: 600; }
+.chroma .sh { color: #032f62; }
+.chroma .si { color: #032f62; }
+.chroma .sx { color: #032f62; }
+.chroma .sr { color: #032f62; }
+.chroma .s1 { color: #032f62; }
+.chroma .ss { color: #005cc5; }
+.chroma .m { color: #005cc5; }  /* Number */
+.chroma .mb { color: #005cc5; }
+.chroma .mf { color: #005cc5; }
+.chroma .mh { color: #005cc5; }
+.chroma .mi { color: #005cc5; }
+.chroma .il { color: #005cc5; }
+.chroma .mo { color: #005cc5; }
+.chroma .o { color: #d73a49; }  /* Operator */
+.chroma .ow { color: #d73a49; font-weight: 600; }
+.chroma .c { color: #6a737d; font-style: italic; }  /* Comment */
+.chroma .ch { color: #6a737d; font-style: italic; }
+.chroma .cm { color: #6a737d; font-style: italic; }
+.chroma .c1 { color: #6a737d; font-style: italic; }
+.chroma .cs { color: #6a737d; font-weight: 600; font-style: italic; }
+.chroma .cp { color: #d73a49; font-weight: 600; }
+.chroma .cpf { color: #032f62; }
+.chroma .gd { color: #d73a49; background: #ffeef0; }  /* Diff deleted */
+.chroma .gi { color: #22863a; background: #f0fff4; }  /* Diff inserted */
+.chroma .ge { font-style: italic; }
+.chroma .gs { font-weight: 700; }
+.chroma .err { color: #d73a49; }
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .chroma .k, .chroma .kc, .chroma .kd, .chroma .kn, .chroma .kr { color: #ff7b72; }
+  .chroma .kp { color: #ff7b72; }
+  .chroma .kt { color: #d2a8ff; }
+  .chroma .na { color: #d2a8ff; }
+  .chroma .nb { color: #79c0ff; }
+  .chroma .nc { color: #d2a8ff; }
+  .chroma .no { color: #79c0ff; }
+  .chroma .nd { color: #d2a8ff; }
+  .chroma .nf { color: #d2a8ff; }
+  .chroma .nl { color: #79c0ff; }
+  .chroma .nt { color: #7ee787; }
+  .chroma .nv { color: #ffa657; }
+  .chroma .s, .chroma .sa, .chroma .sb, .chroma .sc, .chroma .dl,
+  .chroma .sd, .chroma .s2, .chroma .sh, .chroma .si, .chroma .sx,
+  .chroma .sr, .chroma .s1, .chroma .cpf { color: #a5d6ff; }
+  .chroma .se { color: #a5d6ff; }
+  .chroma .ss { color: #79c0ff; }
+  .chroma .m, .chroma .mb, .chroma .mf, .chroma .mh, .chroma .mi,
+  .chroma .il, .chroma .mo { color: #79c0ff; }
+  .chroma .o, .chroma .ow { color: #ff7b72; }
+  .chroma .c, .chroma .ch, .chroma .cm, .chroma .c1, .chroma .cs { color: #8b949e; }
+  .chroma .cp { color: #ff7b72; }
+  .chroma .gd { color: #ffa198; background: rgba(248,81,73,.15); }
+  .chroma .gi { color: #7ee787; background: rgba(63,185,80,.15); }
+  .chroma .err { color: #ffa198; }
+}

@@ -1,0 +1,12 @@
+{
+  "yaml.schemas": {},
+  "files.associations": {
+    "data/config/*.yaml": "yaml"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "yaml.customTags": [],
+  "yaml.validate": true,
+  "ansible.validation.enabled": false
+}

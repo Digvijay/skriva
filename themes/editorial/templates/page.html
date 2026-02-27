@@ -1,0 +1,11 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<article style="max-width:720px;margin:2rem auto">
+<h1 style="font-family:var(--font-heading);font-size:2rem;margin-bottom:1rem">{{.Page.Title}}</h1>
+<div class="post-content">
+{{safeHTML .Page.HTML}}
+</div>
+</article>
+</div>
+{{end}}

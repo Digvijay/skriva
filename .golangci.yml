@@ -1,0 +1,84 @@
+version: "2"
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - staticcheck
+    - unused
+    - ineffassign
+    - misspell
+    - gocritic
+    - revive
+
+  settings:
+    errcheck:
+      exclude-functions:
+        - (net/http.ResponseWriter).Write
+        - (*encoding/json.Encoder).Encode
+        - (*encoding/json.Decoder).Decode
+        - (*database/sql.Rows).Close
+        - (*database/sql.Row).Scan
+        - (*database/sql.DB).Close
+        - (*os.File).Close
+        - (*io.ReadCloser).Close
+        - (*archive/zip.Writer).Close
+        - (*archive/zip.Writer).Write
+        - (io.Closer).Close
+        - (io.ReadSeeker).Seek
+        - (io.Writer).Write
+        - crypto/rand.Read
+        - encoding/json.Unmarshal
+        - image/jpeg.Encode
+        - image/png.Encode
+        - fmt.Fprint
+        - fmt.Fprintf
+        - fmt.Fprintln
+        - io.Copy
+        - os.MkdirAll
+        - os.RemoveAll
+        - os.WriteFile
+        - filepath.WalkDir
+
+    revive:
+      rules:
+        - name: exported
+          severity: warning
+        - name: unexported-return
+          severity: warning
+
+    gocritic:
+      enabled-tags:
+        - diagnostic
+        - style
+        - performance
+      disabled-checks:
+        - whyNoLint
+        - hugeParam
+
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters:
+          - errcheck
+          - gocritic
+      - path: admin_(dashboard|editor|login|newsletter|settings)\.go
+        linters:
+          - revive
+          - gocritic
+      - linters:
+          - gocritic
+        text: "importShadow: shadow of imported.*package 'store'"
+      - linters:
+          - gocritic
+        text: "importShadow: shadow of imported.*package 'html'"
+      - linters:
+          - gocritic
+        text: "unnamedResult:"
+
+issues:
+  max-issues-per-linter: 0
+  max-same-issues: 0
+
+run:
+  timeout: 5m

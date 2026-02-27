@@ -1,0 +1,49 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+
+{{/* Hero section with site intro */}}
+<section class="hero">
+<div class="hero-content">
+{{if .Site.Author.Avatar}}<img src="{{.Site.Author.Avatar}}" alt="{{.Site.Author.Name}}" class="hero-avatar">{{end}}
+<div class="hero-text">
+<h1>{{.Site.Title}}</h1>
+{{if .Site.Tagline}}<p class="hero-tagline">{{.Site.Tagline}}</p>{{end}}
+</div>
+</div>
+</section>
+
+{{/* Posts grid — 2 column magazine layout */}}
+{{if .Posts}}
+<section class="posts-grid">
+{{range $i, $p := .Posts}}
+{{template "post-card" $p}}
+{{end}}
+</section>
+
+{{if .Pagination}}
+<nav class="pagination">
+{{if .Pagination.HasPrev}}<a href="{{.Pagination.PrevURL}}" class="pagination-btn prev">&larr; Newer</a>{{end}}
+<span class="pagination-info">{{.Pagination.CurrentPage}} / {{.Pagination.TotalPages}}</span>
+{{if .Pagination.HasNext}}<a href="{{.Pagination.NextURL}}" class="pagination-btn next">Older &rarr;</a>{{end}}
+</nav>
+{{end}}
+{{else}}
+<div class="empty-state">
+<h2>No posts yet</h2>
+<p>Stay tuned — new content is on the way.</p>
+</div>
+{{end}}
+
+{{/* Tag cloud */}}
+{{if .Tags}}
+<section class="tag-cloud">
+<h2>Explore Topics</h2>
+<div class="tags">
+{{range .Tags}}<a href="/tag/{{.Slug}}" class="tag">{{.Name}} <span class="tag-count">{{.Count}}</span></a>{{end}}
+</div>
+</section>
+{{end}}
+
+</div>
+{{end}}

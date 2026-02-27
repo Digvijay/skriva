@@ -1,0 +1,16 @@
+name: "GitHub"
+description: "A clean, developer-focused theme inspired by GitHub and the GitHub Blog. Features GitHub's Primer design system, proper light/dark mode toggle, and excellent code readability."
+author: "Skriva"
+version: "1.0.0"
+colors:
+  primary: "#0969da"
+  background: "#ffffff"
+  text: "#1f2328"
+  muted: "#656d76"
+  accent: "#0969da"
+  border: "#d0d7de"
+layout: "single-column"
+fonts:
+  heading: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif"
+  body: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif"
+  code: "ui-monospace, 'SFMono-Regular', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace"

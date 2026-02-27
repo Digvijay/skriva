@@ -1,0 +1,40 @@
+{
+  "name": "Skriva Dev",
+  "image": "mcr.microsoft.com/devcontainers/go:1.25-bookworm",
+  // "features": {
+  //   "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  // },
+  "forwardPorts": [8080],
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "golang.go",
+        "ms-vscode.makefile-tools",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "go.useLanguageServer": true,
+        "go.goroot": "/home/vscode/sdk/go1.25.7",
+        "go.alternateTools": {
+          "go": "/home/vscode/sdk/go1.25.7/bin/go"
+        },
+        "go.lintTool": "golangci-lint",
+        "go.lintOnSave": "package",
+        "editor.formatOnSave": true,
+        "[go]": {
+          "editor.defaultFormatter": "golang.go"
+        }
+      }
+    }
+  },
+  "mounts": [
+    "source=blog-gomodcache,target=/go/pkg/mod,type=volume",
+    "source=blog-gobuildcache,target=/home/vscode/.cache/go-build,type=volume"
+  ],
+  "remoteUser": "vscode"
+}

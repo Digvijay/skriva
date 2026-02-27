@@ -1,0 +1,90 @@
+{{template "base" .}}
+{{define "content"}}
+<article class="post container">
+<header class="post-header">
+<div class="post-meta">
+<time datetime="{{.Post.Date.Format "2006-01-02"}}">{{formatDate .Post.Date "January 2, 2006"}}</time>
+<span class="separator">·</span>
+<span class="reading-time">{{readingTime .Post}}</span>
+{{if .Post.Tags}}
+<span class="separator">·</span>
+{{range .Post.Tags}}<a href="/tag/{{slugify .}}" class="tag">{{.}}</a>{{end}}
+{{end}}
+</div>
+<h1 class="post-title">{{.Post.Title}}</h1>
+{{if .Post.Description}}<p class="post-description">{{.Post.Description}}</p>{{end}}
+</header>
+
+{{if .Post.Image}}
+<figure class="post-hero">
+<img src="/media/{{.Post.Slug}}/{{.Post.Image}}" alt="{{.Post.Title}}" loading="lazy">
+{{if .Post.ImageCredit}}<figcaption>Photo by <a href="{{.Post.ImageCredit.URL}}" target="_blank" rel="noopener">{{.Post.ImageCredit.Name}}</a></figcaption>{{end}}
+</figure>
+{{end}}
+
+{{if .SeriesPosts}}
+<nav class="post-series" style="background:var(--color-surface,#f6f8fa);border:1px solid var(--color-border);border-radius:6px;padding:1rem 1.25rem;margin-bottom:1.5rem">
+<strong>Series: {{.Post.Series}}</strong>
+<ol style="margin:.5rem 0 0 1.25rem;font-size:.9rem">
+{{range .SeriesPosts}}
+<li{{if eq .Slug $.Post.Slug}} style="font-weight:700"{{end}}><a href="{{.Permalink}}">{{.Title}}</a></li>
+{{end}}
+</ol>
+</nav>
+{{end}}
+
+{{if .TableOfContents}}
+<nav class="table-of-contents" style="background:var(--color-surface,#f6f8fa);border:1px solid var(--color-border);border-radius:6px;padding:1rem 1.25rem;margin-bottom:1.5rem">
+<strong>Table of Contents</strong>
+<ul style="margin:.5rem 0 0;list-style:none;padding:0;font-size:.9rem">
+{{range .TableOfContents}}
+<li style="padding:2px 0;{{if eq .Level 3}}margin-left:1rem{{end}}{{if eq .Level 4}}margin-left:2rem{{end}}"><a href="#{{.ID}}" style="color:var(--color-primary)">{{.Text}}</a></li>
+{{end}}
+</ul>
+</nav>
+{{end}}
+
+<div class="post-content">
+{{safeHTML .Post.HTML}}
+</div>
+
+{{template "share" .}}
+{{template "reactions" .}}
+
+{{if .RelatedPosts}}
+<section class="related-posts">
+<h2>Related Posts</h2>
+<div class="posts-list">
+{{range .RelatedPosts}}
+<article class="post-card">
+<div class="post-card-content">
+<h3 class="post-card-title"><a href="{{.Permalink}}">{{.Title}}</a></h3>
+<div class="post-card-meta"><time>{{formatDate .Date "Jan 2, 2006"}}</time> · <span>{{readingTime .}}</span></div>
+{{if .Description}}<p class="post-card-excerpt">{{truncate .Description 120}}</p>{{end}}
+</div>
+</article>
+{{end}}
+</div>
+</section>
+{{end}}
+
+{{template "comments" .}}
+
+{{if .Webmentions}}
+<section class="webmentions" style="margin-top:2rem">
+<h2 style="font-size:1.2rem;margin-bottom:1rem">Mentions from the Web</h2>
+{{range .Webmentions}}
+<div style="padding:.75rem 0;border-bottom:1px solid var(--color-border);display:flex;gap:.75rem;align-items:flex-start">
+{{if .AuthorAvatar}}<img src="{{.AuthorAvatar}}" style="width:36px;height:36px;border-radius:50%;flex-shrink:0" alt="" loading="lazy">{{end}}
+<div>
+<strong>{{if .AuthorURL}}<a href="{{.AuthorURL}}" rel="nofollow" style="color:var(--color-primary)">{{.AuthorName}}</a>{{else}}{{.AuthorName}}{{end}}</strong>
+<span style="font-size:.75rem;color:var(--color-muted);margin-left:.5rem">{{.MentionType}}</span>
+{{if .Content}}<p style="margin:.25rem 0 0;font-size:.9rem;color:var(--color-text)">{{truncate .Content 300}}</p>{{end}}
+<a href="{{.Source}}" style="font-size:.75rem;color:var(--color-muted)" rel="nofollow">source</a>
+</div>
+</div>
+{{end}}
+</section>
+{{end}}
+</article>
+{{end}}

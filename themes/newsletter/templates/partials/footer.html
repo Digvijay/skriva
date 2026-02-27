@@ -1,0 +1,46 @@
+{{define "footer"}}
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+{{range .Site.Footer.Sections}}
+<div class="footer-section">
+<h3>{{.Title}}</h3>
+<ul>
+{{range .Links}}<li><a href="{{.URL}}">{{.Label}}</a></li>{{end}}
+</ul>
+</div>
+{{end}}
+<div class="footer-section">
+<h3>Subscribe</h3>
+<ul>
+<li><a href="/rss.xml">RSS Feed</a></li>
+</ul>
+<form action="/api/subscribe" method="POST" style="margin-top:.5rem">
+<input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+<div style="display:flex;gap:.25rem">
+<input type="email" name="email" placeholder="your@email.com" required style="padding:4px 8px;border:1px solid var(--color-border);border-radius:8px;font-size:.8rem;flex:1;background:var(--color-bg);color:var(--color-text)">
+<button type="submit" style="padding:4px 10px;background:var(--color-primary);color:#fff;border:none;border-radius:8px;font-size:.8rem;cursor:pointer">Subscribe</button>
+</div>
+</form>
+{{if .Site.Social}}
+<div class="social-links">
+{{if .Site.Social.Github}}<a href="https://github.com/{{.Site.Social.Github}}" target="_blank" rel="noopener" title="GitHub">GitHub</a>{{end}}
+{{if .Site.Social.Twitter}}<a href="https://twitter.com/{{.Site.Social.Twitter}}" target="_blank" rel="noopener" title="Twitter">Twitter</a>{{end}}
+{{if .Site.Social.Linkedin}}<a href="https://linkedin.com/in/{{.Site.Social.Linkedin}}" target="_blank" rel="noopener" title="LinkedIn">LinkedIn</a>{{end}}
+{{if .Site.Social.Youtube}}<a href="https://youtube.com/@{{.Site.Social.Youtube}}" target="_blank" rel="noopener" title="YouTube">YouTube</a>{{end}}
+{{if .Site.Social.Bluesky}}<a href="https://bsky.app/profile/{{.Site.Social.Bluesky}}" target="_blank" rel="noopener" title="Bluesky">Bluesky</a>{{end}}
+</div>
+{{end}}
+</div>
+</div>
+<div class="footer-bottom">
+{{if .FediAddress}}<p style="font-size:.8rem;color:var(--color-muted);margin-bottom:.5rem">Follow on the Fediverse: <code style="background:var(--color-surface,rgba(255,255,255,.1));padding:2px 6px;border-radius:4px">{{.FediAddress}}</code></p>{{end}}
+<p>&copy; {{currentYear}} {{.Site.Author.Name}}. Powered by <a href="https://github.com/digvijay-msft/blog">Skriva</a>.</p>
+</div>
+</div>
+</footer>
+<div id="cookieConsent" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#24292f;color:#fff;padding:.75rem 1.5rem;font-size:.85rem;z-index:9999;text-align:center">
+  This site uses cookies for sessions and analytics. <a href="#" style="color:#58a6ff;text-decoration:underline" onclick="acceptCookies();return false">Got it</a>
+</div>
+<script>if(!localStorage.getItem('cookie_consent')){document.getElementById('cookieConsent').style.display='block'}function acceptCookies(){localStorage.setItem('cookie_consent','1');document.getElementById('cookieConsent').style.display='none'}</script>
+{{end}}

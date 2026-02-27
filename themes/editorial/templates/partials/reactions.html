@@ -1,0 +1,9 @@
+{{define "reactions"}}
+<div class="reactions">
+<button onclick="react('like','{{.Post.Slug}}')">👍 <span id="likes">{{if .Stats}}{{.Stats.Likes}}{{else}}0{{end}}</span></button>
+<button onclick="react('dislike','{{.Post.Slug}}')">👎 <span id="dislikes">{{if .Stats}}{{.Stats.Dislikes}}{{else}}0{{end}}</span></button>
+</div>
+<script>
+async function react(type,slug){var r=await fetch('/api/reaction/'+slug,{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':'{{.CSRFToken}}'},body:JSON.stringify({type:type})});if(r.ok){var d=await r.json();document.getElementById('likes').textContent=d.likes;document.getElementById('dislikes').textContent=d.dislikes;}}
+</script>
+{{end}}

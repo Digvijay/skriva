@@ -1,0 +1,14 @@
+{{template "base" .}}
+{{define "content"}}
+<div class="container">
+<header class="section-header">
+<h1>Tags</h1>
+<p class="section-desc">Browse all topics.</p>
+</header>
+<div class="tag-cloud" style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem">
+{{range .Tags}}
+<a href="/tag/{{.Slug}}" class="tag">{{.Name}} <span style="opacity:.6">({{.Count}})</span></a>
+{{end}}
+</div>
+</div>
+{{end}}
