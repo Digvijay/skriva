@@ -1,6 +1,6 @@
 # Build stage
 # Pinned to 1.25.7 for GO-2026-4337 (TLS session resumption fix)
-FROM golang:1.25.7-alpine AS builder
+FROM golang:1.26.0-alpine AS builder
 
 RUN apk add --no-cache ca-certificates tzdata
 
